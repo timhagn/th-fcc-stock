@@ -24,6 +24,10 @@ app.use(helmet.contentSecurityPolicy({
   }
 }));
 
+// Add request ip to get client's ip.
+const requestIp = require('request-ip');
+app.use(requestIp.mw());
+
 app.use('/public', express.static(process.cwd() + '/public'));
 
 app.use(cors({origin: '*'})); //For FCC testing purposes only
