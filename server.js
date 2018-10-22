@@ -20,7 +20,7 @@ app.use(helmet());
 app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self'"],
-    styleSrc: ["'self'", 'https://th-fcc-stock.glitch.com', 'localhost']
+    styleSrc: ["'self'", 'https://th-fcc-stock.glitch.com', '127.0.0.1']
   }
 }));
 
