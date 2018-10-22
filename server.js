@@ -1,5 +1,8 @@
 'use strict';
 
+// For local development.
+require('dotenv').config();
+
 var express     = require('express');
 var bodyParser  = require('body-parser');
 var expect      = require('chai').expect;
@@ -10,6 +13,16 @@ var fccTestingRoutes  = require('./routes/fcctesting.js');
 var runner            = require('./test-runner');
 
 var app = express();
+
+// Add helmet() to prevent MIME type & XSS attacks.
+const helmet = require('helmet');
+app.use(helmet());
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"],
+    styleSrc: ["'self'", 'https://th-fcc-stock.glitch.com', 'localhost']
+  }
+}));
 
 app.use('/public', express.static(process.cwd() + '/public'));
 
