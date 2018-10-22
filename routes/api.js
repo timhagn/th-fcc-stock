@@ -19,7 +19,7 @@ mongoose.connect(
     { useNewUrlParser: true }
 );
 
-// Issue Tracker - Schemas
+// Stock Tracker - Schemas
 const StockSchema = new Schema({
   symbol: { type: String, required: true },
   likes_per_ip: [{ type: String }],
